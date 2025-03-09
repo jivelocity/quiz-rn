@@ -1,14 +1,22 @@
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, Pressable } from "react-native";
+import { useQuizContext } from "../providers/QuizProvider";
 
 type AnswerOption = {
   option: string;
 };
 
 export default function AnswerOption({ option }: AnswerOption) {
+  const { selectedOption, setSelectedOption } = useQuizContext();
+
+  const isSelected = selectedOption === option;
+
   return (
-    <View style={styles.container}>
+    <Pressable
+      onPress={() => setSelectedOption?.(option)}
+      style={[styles.container, isSelected && styles.selected]}
+    >
       <Text>{option}</Text>
-    </View>
+    </Pressable>
   );
 }
 
@@ -18,5 +26,9 @@ const styles = StyleSheet.create({
     borderColor: "lightgray",
     padding: 20,
     borderRadius: 100,
+  },
+  selected: {
+    backgroundColor: "#e1f396",
+    borderColor: "#b6d676",
   },
 });
