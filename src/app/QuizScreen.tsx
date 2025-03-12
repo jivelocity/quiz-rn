@@ -4,7 +4,7 @@ import { FontAwesome6 } from "@expo/vector-icons";
 import Card from "../components/Card";
 import Button from "../components/Button";
 import { useQuizContext } from "../providers/QuizProvider";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { useTimer } from "../hooks/useTimer";
 
 export default function QuizScreen() {
